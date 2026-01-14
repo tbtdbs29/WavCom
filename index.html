@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Wav'com - Agence de Communication & Community Manager en Bretagne</title>
+    
+    <meta name="description" content="Boostez votre visibilité avec Wav'com, studio de communication en Bretagne. Gestion réseaux sociaux, création de contenu et stratégie digitale pour artisans et commerçants.">
+    
+    <meta name="keywords" content="communication bretagne, community manager, agence web locale, création site internet, réseaux sociaux, wavcom">
+    
+    <meta property="og:title" content="Wav'com - Votre Vague de Communication en Bretagne">
+    <meta property="og:description" content="Besoin de visibilité ? Découvrez mes services de communication locale et réseaux sociaux.">
+    <meta property="og:image" content="https://wavcom.netlify.app/logo.png"> <meta property="og:url" content="https://wavcom.netlify.app/">
+    <meta property="og:type" content="website">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'wav-primary': '#73aae8', 
+                        'wav-light': '#F6FFFF', 
+                        'wav-dark': '#2c3e50',
+                        'wav-accent': '#2c3e50'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'wave-slow': 'wave 20s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        wave: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; color: #2c3e50; overflow-x: hidden; }
+        .bg-striped-wav {
+            background-color: #ffffff;
+            background-image: repeating-linear-gradient(90deg, #73aae8, #73aae8 40px, #ffffff 40px, #ffffff 80px);
+        }
+        .nav-link-active { color: #73aae8; font-weight: 700; border-bottom: 2px solid #73aae8; }
+        .page-content { display: none; }
+        .page-content.active { display: block; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-wav-light flex flex-col min-h-screen">
+
+    <header class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300" data-aos="fade-down" data-aos-duration="800">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex flex-col group" onclick="showPage('page-accueil'); return false;">
+                <span class="text-3xl font-bold text-wav-primary">Wav'com</span>
+                <span class="h-1 w-0 bg-wav-dark transition-all group-hover:w-full duration-300"></span>
+            </a>
+            
+            <div class="hidden md:flex space-x-6">
+                <a href="#" data-page="accueil" class="text-gray-600 hover:text-wav-primary transition-colors nav-link page-link">Accueil</a>
+                <a href="#" data-page="a-propos" class="text-gray-600 hover:text-wav-primary transition-colors nav-link page-link">À propos</a>
+                <a href="#" data-page="services" class="text-gray-600 hover:text-wav-primary transition-colors nav-link page-link">Services</a>
+                <a href="#" data-page="tarifs" class="text-gray-600 hover:text-wav-primary transition-colors nav-link page-link">Tarifs</a>
+                <a href="#" data-page="contact" class="text-gray-600 hover:text-wav-primary transition-colors nav-link page-link">Contact</a>
+            </div>
+
+            <a href="#" data-page="contact" class="hidden md:block bg-wav-primary text-white px-5 py-2 rounded-full font-medium hover:bg-wav-dark transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all page-link">
+                Me contacter
+            </a>
+
+            <button id="mobile-menu-button" class="md:hidden text-wav-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg border-t border-gray-100 absolute w-full z-40">
+            <a href="#" data-page="accueil" class="block px-6 py-3 text-gray-600 hover:bg-gray-50 hover:text-wav-primary page-link">Accueil</a>
+            <a href="#" data-page="a-propos" class="block px-6 py-3 text-gray-600 hover:bg-gray-50 hover:text-wav-primary page-link">À propos</a>
+            <a href="#" data-page="services" class="block px-6 py-3 text-gray-600 hover:bg-gray-50 hover:text-wav-primary page-link">Services</a>
+            <a href="#" data-page="tarifs" class="block px-6 py-3 text-gray-600 hover:bg-gray-50 hover:text-wav-primary page-link">Tarifs</a>
+            <a href="#" data-page="contact" class="block px-6 py-3 text-gray-600 hover:bg-gray-50 hover:text-wav-primary page-link">Contact</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+        <section id="page-accueil" class="page-content active">
+            
+            <div class="relative bg-striped-wav pt-24 pb-32 overflow-hidden">
+                <div class="container mx-auto px-6 text-center relative z-10">
+                    
+                    <div class="bg-white/95 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl max-w-4xl mx-auto border border-gray-100 animate-float" data-aos="zoom-in" data-aos-duration="1000">
+                        
+                        <div class="w-24 h-2 bg-wav-primary mx-auto mb-6 rounded-full opacity-80" data-aos="fade-right" data-aos-delay="300"></div>
+                        
+                        <h1 class="text-5xl md:text-7xl font-bold text-wav-dark mb-6 leading-tight">
+                            Bienvenue chez <br>
+                            <span class="text-wav-primary relative inline-block">
+                                Wav'com
+                                <svg class="absolute w-full h-3 -bottom-2 left-0 text-wav-dark" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                    <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="3" fill="none">
+                                        <animate attributeName="d" dur="3s" repeatCount="indefinite" values="M0 5 Q 50 10 100 5; M0 5 Q 50 0 100 5; M0 5 Q 50 10 100 5"/>
+                                    </path>
+                                </svg>
+                            </span>
+                        </h1>
+                        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto font-medium" data-aos="fade-up" data-aos-delay="200">
+                            Votre nouvelle vague de communication en Bretagne.
+                        </p>
+                        
+                        <div class="flex flex-col md:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
+                            <a href="#" data-page="services" class="page-link bg-wav-primary text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-wav-dark transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 active:scale-95">
+                                Découvrir mes services
+                            </a>
+                            <a href="#" data-page="contact" class="page-link bg-white text-wav-primary border-2 border-wav-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-wav-light transition-all transform hover:-translate-y-1">
+                                Demander un audit
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" class="w-full h-24 md:h-32">
+                         <path fill="#F6FFFF" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="container mx-auto px-6 py-16">
+                 <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
+                    <h2 class="text-3xl font-bold text-wav-dark mb-6">Pourquoi choisir Wav'com ?</h2>
+                    <p class="text-gray-600 mb-8">
+                        Pas de jargon compliqué, juste des résultats. Comme une marée montante, je vous aide à élever votre niveau de visibilité progressivement et sûrement.
+                    </p>
+                 </div>
+            </div>
+
+        </section>
+
+        <section id="page-a-propos" class="page-content container mx-auto px-6 py-12">
+            <h2 class="text-4xl font-bold text-wav-dark text-center mb-12" data-aos="fade-down">À propos de moi</h2>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="w-full md:w-1/2" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold text-wav-primary mb-4">Je suis Pauline</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        Passionnée par la communication et amoureuse de la Bretagne, j'ai créé Wav'com pour aider les entreprises locales à surfer sur la vague du digital.
+                    </p>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        Après plusieurs expériences terrain, j'ai décidé de mettre mon expertise au service des commerçants, artisans et associations qui font la richesse de notre territoire.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed border-l-4 border-wav-primary pl-4 italic">
+                        "Mon objectif : vous offrir une communication authentique, professionnelle et à votre image."
+                    </p>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="photo/Metro.png.jpg" alt="[Image de Votre Photo 1]" class="rounded-lg shadow-lg aspect-square object-cover hover:scale-105 transition-transform duration-500 hover:rotate-2" data-aos="zoom-in" data-aos-delay="0">
+                        <img src="photo/phare.jpg" alt="[Image de Votre Photo 2]" class="rounded-lg shadow-lg aspect-square object-cover hover:scale-105 transition-transform duration-500 hover:-rotate-2" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="photo/cabane.jpg" alt="[Image de Votre Photo 3]" class="rounded-lg shadow-lg aspect-square object-cover hover:scale-105 transition-transform duration-500 hover:rotate-2" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="photo/pauline.JPG" alt="[Image de Votre Photo 4]" class="rounded-lg shadow-lg aspect-square object-cover hover:scale-105 transition-transform duration-500 hover:-rotate-2" data-aos="zoom-in" data-aos-delay="300">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-services" class="page-content container mx-auto px-6 py-12">
+            <h2 class="text-4xl font-bold text-wav-dark text-center mb-12" data-aos="fade-down">Mes Services de Communication</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg transition-all duration-300 hover:scale-[1.02] border-l-4 border-wav-primary hover:shadow-2xl" data-aos="fade-up" data-aos-delay="0">
+                    <h3 class="text-2xl font-bold text-wav-primary mb-6 flex items-center">
+                        <span class="bg-wav-light p-2 rounded-full mr-3 text-3xl">📱</span>
+                        Gestion des Réseaux Sociaux
+                    </h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-wav-primary mr-2 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                            Gestion de comptes Instagram, Facebook, TikTok
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-wav-primary mr-2 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                            Création de calendrier éditorial
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-wav-primary mr-2 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                            Création de contenus visuels (Reels, Posts)
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg transition-all duration-300 hover:scale-[1.02] border-l-4 border-wav-primary hover:shadow-2xl" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-2xl font-bold text-wav-primary mb-6 flex items-center">
+                        <span class="bg-wav-light p-2 rounded-full mr-3 text-3xl">🎉</span>
+                        Événementiel & Com' Locale
+                    </h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-wav-primary mr-2 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                            Organisation d'événements boutiques
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-wav-primary mr-2 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                            Création de supports (flyers, affiches)
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-wav-primary mr-2 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                            Animation en direct (Stories)
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg transition-all duration-300 hover:scale-[1.02] border-l-4 border-wav-primary hover:shadow-2xl" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-2xl font-bold text-wav-primary mb-6 flex items-center">
+                        <span class="bg-wav-light p-2 rounded-full mr-3 text-3xl">✍️</span>
+                        Communication Écrite
+                    </h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-wav-primary mr-2 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                            Rédaction web & Articles de blog
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-wav-primary mr-2 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                            Newsletters engageantes
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-wav-primary mr-2 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                            Optimisation fiches produits
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg transition-all duration-300 hover:scale-[1.02] border-l-4 border-wav-primary hover:shadow-2xl" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-2xl font-bold text-wav-primary mb-6 flex items-center">
+                        <span class="bg-wav-light p-2 rounded-full mr-3 text-3xl">💡</span>
+                        Conseil & Stratégie
+                    </h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-wav-primary mr-2 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                            Audit de communication
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-wav-primary mr-2 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                            Création de kits graphiques
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-wav-primary mr-2 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                            Formation réseaux sociaux
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="page-tarifs" class="page-content container mx-auto px-6 py-12">
+            <h2 class="text-4xl font-bold text-wav-dark text-center mb-12" data-aos="fade-down">Mes Tarifs</h2>
+            <p class="text-center text-gray-600 text-lg max-w-2xl mx-auto mb-12" data-aos="fade-in">
+                Chaque projet est unique. Je privilégie le sur-mesure pour respecter votre budget et vos objectifs.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center border-t-4 border-wav-primary hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="0">
+                    <div>
+                        <div class="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">📦</div>
+                        <h3 class="text-2xl font-bold text-wav-dark mb-4">Packs Mensuels</h3>
+                        <p class="text-gray-600 mb-6">
+                            Pour une tranquillité d'esprit totale. Gestion complète de vos réseaux.
+                        </p>
+                    </div>
+                    <span class="text-3xl font-bold text-wav-primary block mt-4">Sur Devis</span>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center border-t-4 border-wav-primary hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="150">
+                    <div>
+                        <div class="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">🚀</div>
+                        <h3 class="text-2xl font-bold text-wav-dark mb-4">Au Projet</h3>
+                        <p class="text-gray-600 mb-6">
+                            Lancement de produit, ouverture de boutique, événement ponctuel.
+                        </p>
+                    </div>
+                    <span class="text-3xl font-bold text-wav-primary block mt-4">Sur Devis</span>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center border-t-4 border-wav-primary hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                    <div>
+                        <div class="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">🎓</div>
+                        <h3 class="text-2xl font-bold text-wav-dark mb-4">Coaching</h3>
+                        <p class="text-gray-600 mb-6">
+                            Apprenez à gérer vous-même votre communication digitale.
+                        </p>
+                    </div>
+                    <span class="text-3xl font-bold text-wav-primary block mt-4">Sur Devis</span>
+                </div>
+            </div>
+
+            <div class="text-center mt-12" data-aos="zoom-in">
+                <a href="#" class="bg-wav-primary text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-wav-dark transition-all shadow-lg page-link" data-page="contact">
+                    Obtenir un devis personnalisé
+                </a>
+            </div>
+        </section>
+
+        <section id="page-contact" class="page-content container mx-auto px-6 py-12">
+            <h2 class="text-4xl font-bold text-wav-dark text-center mb-12" data-aos="fade-down">Prenons contact !</h2>
+            <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-lg border-t-8 border-wav-primary" data-aos="fade-up" data-aos-duration="1000">
+                <p class="text-gray-600 text-center mb-8">
+                    Prêt à donner un coup de frais à votre communication ? Remplissez ce formulaire ou contactez-moi directement.
+                </p>
+                
+                <form id="contact-form" action="#" method="POST">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="prenom" class="block mb-2 text-sm font-medium text-wav-dark">Prénom</label>
+                            <input type="text" id="prenom" name="prenom" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-wav-primary focus:border-wav-primary transition-all outline-none focus:shadow-[0_0_0_3px_rgba(115,170,232,0.3)]" required>
+                        </div>
+                        <div>
+                            <label for="nom" class="block mb-2 text-sm font-medium text-wav-dark">Nom</label>
+                            <input type="text" id="nom" name="nom" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-wav-primary focus:border-wav-primary transition-all outline-none focus:shadow-[0_0_0_3px_rgba(115,170,232,0.3)]" required>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block mb-2 text-sm font-medium text-wav-dark">Adresse Mail</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-wav-primary focus:border-wav-primary transition-all outline-none focus:shadow-[0_0_0_3px_rgba(115,170,232,0.3)]" required>
+                    </div>
+                    <div class="mb-8">
+                        <label for="message" class="block mb-2 text-sm font-medium text-wav-dark">Votre message</label>
+                        <textarea id="message" name="message" rows="6" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-wav-primary focus:border-wav-primary transition-all outline-none focus:shadow-[0_0_0_3px_rgba(115,170,232,0.3)]" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-wav-primary text-white px-10 py-3 rounded-full font-bold text-lg hover:bg-wav-dark transition-all shadow-lg transform hover:-translate-y-0.5 active:translate-y-0">
+                            Envoyer le message
+                        </button>
+                    </div>
+                </form>
+                <div id="form-confirmation" class="hidden text-center mt-8 p-4 bg-green-100 text-green-800 rounded-lg border border-green-200 animate-bounce">
+                    Merci ! Votre message a bien été envoyé. Je vous réponds au plus vite. 🌊
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-wav-dark text-white border-t border-gray-200 mt-auto">
+        <div class="container mx-auto px-6 py-12 text-center">
+            <h4 class="text-2xl font-bold text-wav-primary mb-4" data-aos="flip-up">Wav'com</h4>
+            <p class="opacity-80 mb-6">Faire des vagues, c'est bien. Être vu, c'est mieux.</p>
+            
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://www.instagram.com/wavcomstudio/" class="hover:text-wav-primary transition-colors transform hover:scale-110">Instagram</a>
+                <a href="https://fr.linkedin.com/in/pauline-guilcher-77b01022b" class="hover:text-wav-primary transition-colors transform hover:scale-110">LinkedIn</a>
+            </div>
+
+            <p class="text-sm opacity-50">&copy; 2025 Wav'com - Tous droits réservés.</p>
+            <p class="text-sm mt-2 opacity-50">Créé avec 💙 en Bretagne.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialisation de l'animation
+            AOS.init({
+                once: true, // L'animation ne se joue qu'une fois
+                offset: 50, // Déclenchement un peu plus tôt
+                duration: 800, // Durée par défaut
+                easing: 'ease-out-cubic',
+            });
+
+            const pageLinks = document.querySelectorAll('.page-link');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page-content');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const contactForm = document.getElementById('contact-form');
+            const formConfirmation = document.getElementById('form-confirmation');
+
+            // Fonction globale accessible depuis le HTML
+            window.showPage = function(pageId) {
+                // 1. Cacher toutes les pages
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+
+                // 2. Afficher la page cible
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                    
+                    // IMPORTANT : Rafraîchir AOS car la hauteur de page a changé
+                    setTimeout(() => {
+                        AOS.refresh(); 
+                    }, 100);
+                }
+
+                // 3. Mettre à jour le menu
+                navLinks.forEach(link => {
+                    link.classList.remove('nav-link-active');
+                    if (link.getAttribute('data-page') === pageId.replace('page-', '')) {
+                        link.classList.add('nav-link-active');
+                    }
+                });
+
+                // 4. Fermer le menu mobile et remonter
+                mobileMenu.classList.add('hidden');
+                window.scrollTo(0, 0);
+            };
+
+            // Gestionnaires d'événements
+            pageLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    let pageId = link.getAttribute('data-page');
+                    // Construction de l'ID si nécessaire
+                    if (pageId && !pageId.startsWith('page-')) {
+                        pageId = 'page-' + pageId;
+                    }
+                    if(pageId) showPage(pageId);
+                });
+            });
+
+            if(mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault(); // On empêche le rechargement de page classique
+
+                    const formData = new FormData(contactForm);
+                    
+                    // REMPLACE L'URL CI-DESSOUS PAR CELLE QUE TU AS EU SUR FORMSPREE
+                    fetch("https://formspree.io/f/xzddzebo", {
+                        method: "POST",
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    }).then(response => {
+                        if (response.ok) {
+                            // Succès : on affiche ton message de confirmation
+                            contactForm.style.display = 'none';
+                            formConfirmation.style.display = 'block';
+                            // Rafraîchir les animations si nécessaire
+                            if(typeof AOS !== 'undefined') setTimeout(() => AOS.refresh(), 100);
+                        } else {
+                            // Erreur côté serveur
+                            response.json().then(data => {
+                                if (Object.hasOwn(data, 'errors')) {
+                                    alert(data["errors"].map(error => error["message"]).join(", "));
+                                } else {
+                                    alert("Oups ! Il y a eu un problème lors de l'envoi du formulaire.");
+                                }
+                            });
+                        }
+                    }).catch(error => {
+                        // Erreur réseau
+                        alert("Oups ! Il y a eu un problème de connexion.");
+                    });
+                });
+            }
+
+            // Affichage initial
+            showPage('page-accueil');
+        });
+    </script>
+
+</body>
+</html>
